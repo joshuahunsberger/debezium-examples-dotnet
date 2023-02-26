@@ -17,7 +17,8 @@ CREATE TABLE Inventory.Customers (
 CREATE TABLE Inventory.PurchaseOrders (
     PurchaseOrderID BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     CustomerId INT NOT NULL,
-    OrderDate DATETIME2(7) NOT NULL
+    OrderDate DATETIME2(7) NOT NULL,
+    PurchaseOrderKey UNIQUEIDENTIFIER NOT NULL
 );
 
 CREATE TABLE Inventory.OrderLineItems (
@@ -26,7 +27,8 @@ CREATE TABLE Inventory.OrderLineItems (
     TotalPrice DECIMAL(19,2) NULL,
     OrderId BIGINT NULL,
     Item NVARCHAR(255) NULL,
-    Status NVARCHAR(255) NULL
+    Status NVARCHAR(255) NULL,
+    OrderLineItemKey UNIQUEIDENTIFIER NOT NULL
 );
 
 CREATE TABLE Inventory.OutboxEvents (
@@ -60,7 +62,8 @@ CREATE TABLE Inventory.Customers (
 CREATE TABLE Inventory.PurchaseOrders (
     PurchaseOrderID BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     CustomerId INT NOT NULL,
-    OrderDate DATETIME2(7) NOT NULL
+    OrderDate DATETIME2(7) NOT NULL,
+    PurchaseOrderKey UNIQUEIDENTIFIER NOT NULL
 );
 
 CREATE TABLE Inventory.OrderLineItems (
@@ -69,7 +72,8 @@ CREATE TABLE Inventory.OrderLineItems (
     TotalPrice DECIMAL(19,2) NULL,
     OrderId BIGINT NULL,
     Item NVARCHAR(255) NULL,
-    Status NVARCHAR(255) NULL
+    Status NVARCHAR(255) NULL,
+    OrderLineItemKey UNIQUEIDENTIFIER NOT NULL
 );
 
 CREATE TABLE Inventory.Shipment (
