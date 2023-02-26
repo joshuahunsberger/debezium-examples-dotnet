@@ -1,4 +1,6 @@
-﻿using OrderService.Models;
+﻿using OrderService.DependencyInjection;
+using OrderService.Models;
+using OrderService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddOrderServices(builder.Configuration);
 
 var app = builder.Build();
 
@@ -18,9 +22,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapPost("/orders", (CreateOrderRequest request) =>
+app.MapPost("/orders", async (CreateOrderRequest request, IOrderCreationService orderCreationService) =>
 {
-    // TODO: Handle request
+    await orderCreationService.CreateOrder(request);
+    return Results.NoContent();
 })
 .WithName("CreateOrder")
 .WithOpenApi();
