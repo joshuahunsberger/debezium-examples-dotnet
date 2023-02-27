@@ -3,6 +3,8 @@ GO
 
 USE Orders;
 GO
+EXEC sys.sp_cdc_enable_db;
+GO
 
 CREATE SCHEMA Inventory;
 GO
@@ -39,7 +41,7 @@ CREATE TABLE Inventory.OutboxEvents (
     Payload NVARCHAR(4000) NULL
 );
 
--- TODO: Enable CDC
+EXEC sys.sp_cdc_enable_table @source_schema = 'Inventory', @source_name = 'OutboxEvents', @role_name = NULL, @supports_net_changes = 0;
 
 GO
 
