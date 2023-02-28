@@ -12,6 +12,8 @@ public class PurchaseOrder
 
     public List<OrderLineItem> OrderLineItems { get; set; } = new List<OrderLineItem>();
 
+    public decimal OrderTotal => OrderLineItems.Sum(o => o.TotalPrice ?? 0);
+
     internal class PurchaseOrderConfiguration : IEntityTypeConfiguration<PurchaseOrder>
     {
         public void Configure(EntityTypeBuilder<PurchaseOrder> builder)
