@@ -51,6 +51,18 @@ namespace OrderService.Services
             };
             _context.Add(outboxMessage);
 
+            var invoiceCreatedEvent = new InvoiceCreatedEvent(orderEntity);
+
+            var invoiceOutboxMessage = new OutboxEvent
+            {
+                AggregateType = "Customer",
+                Type = "InvoiceCreated",
+                AggregateId = invoiceCreatedEvent.CustomerId.ToString(),
+                Payload = JsonSerializer.Serialize(invoiceCreatedEvent)
+            };
+
+            _context.Add(invoiceOutboxMessage);
+
             await _context.SaveChangesAsync();
         }
     }
