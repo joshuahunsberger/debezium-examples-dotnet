@@ -3,7 +3,7 @@
 public class OrderCreatedEvent
 {
     public Guid OrderKey { get; set; }
-    public long CustomerId { get; set; }
+    public int CustomerId { get; set; }
     public DateTime OrderDate { get; set; }
 
     public List<LineItem> LineItems { get; set; } = new List<LineItem>();

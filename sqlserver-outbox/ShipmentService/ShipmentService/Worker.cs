@@ -45,6 +45,8 @@ public class Worker : BackgroundService
                 using var scope = _serviceScopeFactory.CreateScope();
                 var messageLogService = scope.ServiceProvider.GetRequiredService<IMessageLogService>();
                 await messageLogService.LogProcessedMessage(key);
+                var orderReceivedService = scope.ServiceProvider.GetRequiredService<IOrderReceivedService>();
+                await orderReceivedService.HandleReceivedOrder(orderEvent);
                 consumer.Commit(consumeResult);
             }
         }

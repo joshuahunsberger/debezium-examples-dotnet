@@ -16,6 +16,7 @@ public static class ServiceCollectionExtensions
         return services
             .AddDbContext<ShipmentsContext>(builder => builder.UseSqlServer(connectionString))
             .AddScoped<IMessageLogService, MessageLogService>()
+            .AddScoped<IOrderReceivedService, OrderReceivedService>()
             .AddSingleton(kafkaConfiguration);
     }
 }

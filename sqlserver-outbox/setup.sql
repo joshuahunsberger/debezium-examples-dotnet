@@ -82,7 +82,7 @@ CREATE TABLE Inventory.Shipment (
     ShipmentId BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     CustomerId INT NOT NULL,
     OrderDate DATETIME2(7) NOT NULL,
-    OrderId BIGINT NOT NULL
+    PurchaseOrderKey UNIQUEIDENTIFIER NOT NULL
 );
 
 CREATE TABLE Inventory.ConsumedMessages (
