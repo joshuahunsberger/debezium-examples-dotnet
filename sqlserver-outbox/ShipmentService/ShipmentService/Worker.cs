@@ -24,7 +24,8 @@ public class Worker : BackgroundService
         {
             GroupId = "shipment-service",
             BootstrapServers = _kafkaConfiguration.Broker,
-            EnableAutoCommit = false
+            EnableAutoCommit = false,
+            AutoOffsetReset = AutoOffsetReset.Earliest
         };
         using var consumer = new ConsumerBuilder<Guid, OrderCreatedEvent>(consumerConfig)
             .SetKeyDeserializer(new JsonDeserializer<Guid>())
