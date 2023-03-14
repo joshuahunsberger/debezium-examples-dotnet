@@ -1,4 +1,6 @@
-﻿using OrderService.DependencyInjection;
+﻿using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using OrderService.DependencyInjection;
 using OrderService.Models;
 using OrderService.Services;
 
@@ -9,7 +11,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddOrderServices(builder.Configuration);
+builder.Services.AddOrderServices(builder.Configuration)
+    .AddOpenTelemetry()
+    .WithTracing(builder => builder
+        .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("OrderService"))
+        .AddAspNetCoreInstrumentation()
+        .AddSqlClientInstrumentation()
+        .AddConsoleExporter()
+        .AddOtlpExporter());
 
 var app = builder.Build();
 
