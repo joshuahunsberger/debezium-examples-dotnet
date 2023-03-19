@@ -17,7 +17,7 @@
         "transforms" : "outbox",
         "transforms.outbox.type" : "io.debezium.transforms.outbox.EventRouter",
         "transforms.outbox.route.topic.replacement" : "${routedByValue}.events",
-        "transforms.outbox.table.fields.additional.placement" : "Type:header:EventType",
+        "transforms.outbox.table.fields.additional.placement" : "Type:header:EventType,TraceParent:header:traceparent",
         "transforms.outbox.table.field.event.id": "Id",
         "transforms.outbox.table.field.event.key": "AggregateId",
         "transforms.outbox.table.field.event.payload": "Payload",
