@@ -11,13 +11,13 @@ services:
     environment:
       - COLLECTOR_OTLP_ENABLED=true
   zookeeper:
-    image: quay.io/debezium/zookeeper:${DEBEZIUM_VERSION}
+    image: quay.io/debezium/zookeeper:${DEBEZIUM_VERSION:-2.2.0.Final}
     ports:
       - 2181:2181
       - 2888:2888
       - 3888:3888
   kafka:
-    image: quay.io/debezium/kafka:${DEBEZIUM_VERSION}
+    image: quay.io/debezium/kafka:${DEBEZIUM_VERSION:-2.2.0.Final}
     ports:
       - 9092:9092
     links:
