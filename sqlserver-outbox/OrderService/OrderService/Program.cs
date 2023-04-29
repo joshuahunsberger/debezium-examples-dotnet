@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddOrderServices(builder.Configuration)
     .AddOpenTelemetry()
-    .WithTracing(builder => builder
+    .WithTracing(tracerProviderBuilder => tracerProviderBuilder
         .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("OrderService"))
         .AddAspNetCoreInstrumentation(options => options.RecordException = true)
         .AddSqlClientInstrumentation(options =>
