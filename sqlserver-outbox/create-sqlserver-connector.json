@@ -9,7 +9,7 @@
         "database.user" : "sa",
         "database.password" : "Password!",
         "database.names" : "Orders",
-        "schema.history.internal.kafka.bootstrap.servers" : "kafka:9092",
+        "schema.history.internal.kafka.bootstrap.servers" : "kafka:29092",
         "schema.history.internal.kafka.topic": "schema-changes.inventory",
         "database.encrypt": "false",
         "table.include.list" : "Inventory.OutboxEvents",
