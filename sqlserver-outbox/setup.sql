@@ -38,7 +38,8 @@ CREATE TABLE Inventory.OutboxEvents (
     AggregateType NVARCHAR(255) NOT NULL,
     AggregateId NVARCHAR(255) NOT NULL,
     Type NVARCHAR(255) NOT NULL,
-    Payload NVARCHAR(4000) NULL
+    Payload NVARCHAR(4000) NULL,
+    TraceParent NVARCHAR(255) NULL
 );
 
 EXEC sys.sp_cdc_enable_table @source_schema = 'Inventory', @source_name = 'OutboxEvents', @role_name = NULL, @supports_net_changes = 0;

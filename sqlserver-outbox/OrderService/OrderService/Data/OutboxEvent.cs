@@ -10,6 +10,7 @@ public class OutboxEvent
     public string AggregateId { get; set; } = null!;
     public string Type { get; set; } = null!;
     public string? Payload { get; set; }
+    public string? TraceParent { get; set; }
 
     internal class OutboxEventEntityTypeConfiguration : IEntityTypeConfiguration<OutboxEvent>
     {
@@ -21,6 +22,7 @@ public class OutboxEvent
             builder.Property(e => e.AggregateType).HasMaxLength(255);
             builder.Property(e => e.Payload).HasMaxLength(4000);
             builder.Property(e => e.Type).HasMaxLength(255);
+            builder.Property(e => e.TraceParent).HasMaxLength(255);
         }
     }
 }

@@ -1,11 +1,11 @@
 {
-    "profiles": {
-        "ShipmentService": {
-            "commandName": "Project",
-            "environmentVariables": {
-                "DOTNET_ENVIRONMENT": "Development"
-            },
-            "dotnetRunMessages": true
-        }
+  "profiles": {
+    "ShipmentService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true
     }
+  }
 }
