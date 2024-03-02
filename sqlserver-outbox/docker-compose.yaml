@@ -54,8 +54,8 @@ services:
     build:
       context: debezium-strimzi
       args:
-        DEBEZIUM_CONNECTOR_VERSION: "${DEBEZIUM_CONNECTOR_VERSION:-2.2.0.Final}"
-        STRIMZI_VERSION: "${STRIMZI_VERSION:-latest-kafka-3.3.1}"
+        DEBEZIUM_CONNECTOR_VERSION: "${DEBEZIUM_CONNECTOR_VERSION:-2.5.2.Final}"
+        STRIMZI_VERSION: "${STRIMZI_VERSION:-latest-kafka-3.6.1}"
     ports:
       - 8083:8083
     links:
