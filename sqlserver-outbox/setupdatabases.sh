@@ -1,1 +1,1 @@
-cat setup.sql | docker-compose exec -T sqlserver bash -c '/opt/mssql-tools/bin/sqlcmd -U sa -P $SA_PASSWORD'
+cat setup.sql | docker-compose exec -T sqlserver bash -c '/opt/mssql-tools18/bin/sqlcmd -U sa -P $MSSQL_SA_PASSWORD -No'
